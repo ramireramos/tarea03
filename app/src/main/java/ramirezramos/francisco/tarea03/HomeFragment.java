@@ -38,7 +38,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
     private void loadPokemon() {
-        PokeApiService apiService = ApiClient.getInstance().create(PokeApiService.class);
+        PokeApiService apiService = ApiClient.getRetrofitInstance().create(PokeApiService.class);
         Call<PokemonResponse> call = apiService.getPokemonList(100, 0);
 
         call.enqueue(new Callback<PokemonResponse>() {

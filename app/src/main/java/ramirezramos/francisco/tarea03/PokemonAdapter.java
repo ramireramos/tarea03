@@ -1,5 +1,7 @@
 package ramirezramos.francisco.tarea03;
 
+import static com.squareup.picasso.Picasso.get;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -11,12 +13,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
-import ramirezramos.francisco.tarea03.api.ApiClient;
-import ramirezramos.francisco.tarea03.api.PokeApiService;
 import ramirezramos.francisco.tarea03.api.PokemonResponse;
 
 public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonViewHolder> {
@@ -49,40 +47,18 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
         String imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/" + id + ".png";
 
         // Cargar la imagen con Picasso
-        Picasso.get()
+        get()
                 .load(imageUrl)
                 .placeholder(R.drawable.pokemon) // Imagen de carga
-                .error(R.drawable.poke2)         // Imagen de error
+                .error(R.drawable.poke2)             // Imagen de error
                 .into(holder.pokemonImageView);
 
         // Evento de clic
         holder.itemView.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
-            Intent intent = new Intent(context, PokemonDetailActivity.class);
+            var intent = new Intent(context, PokemonDetailActivity.class);
             intent.putExtra("pokemon_name", pokemon.getName());
-            intent.putExtra("pokemon_image_url", imageUrl);
-
-            // Llama a la API para obtener detalles adicionales del Pokémon
-            ApiClient.getInstance().create(PokeApiService.class)
-                    .getPokemon(Integer.parseInt(id))
-                    .enqueue(new retrofit2.Callback<PokemonDetailResponse>() {
-                        @Override
-                        public void onResponse(retrofit2.Call<PokemonDetailResponse> call, retrofit2.Response<PokemonDetailResponse> response) {
-                            if (response.isSuccessful() && response.body() != null) {
-                                PokemonDetailResponse details = response.body();
-                                intent.putExtra("pokemon_type", details.getTypesAsString());
-                                intent.putExtra("pokemon_weight", details.getWeight());
-                                intent.putExtra("pokemon_height", details.getHeight());
-                                context.startActivity(intent);
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(retrofit2.Call<PokemonDetailResponse> call, Throwable t) {
-                            // Manejo de errores
-                            t.printStackTrace();
-                        }
-                    });
+            context.startActivity(intent);
         });
     }
 
@@ -97,8 +73,8 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
 
         public PokemonViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameTextView = itemView.findViewById(R.id.pokemon_name);
-            pokemonImageView = itemView.findViewById(R.id.pokemon_image);
+            nameTextView = itemView.findViewById(R.id.text_view);
+            pokemonImageView = itemView.findViewById(R.id.pokemon_image); // ID debe coincidir con el XML
         }
     }
 }
