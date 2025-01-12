@@ -8,7 +8,7 @@ public class ApiClient {
     private static final String BASE_URL = "https://pokeapi.co/api/v2/";
     private static Retrofit retrofit;
 
-    public static Retrofit getRetrofitInstance() {
+    public static Retrofit getInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

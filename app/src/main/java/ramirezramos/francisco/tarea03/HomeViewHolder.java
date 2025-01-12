@@ -17,7 +17,7 @@ public class HomeViewHolder extends RecyclerView.ViewHolder {
         super(binding.getRoot());
         this.binding = binding;
         //super(itemView);
-        nameTextView = itemView.findViewById(R.id.text_view);
+        nameTextView = itemView.findViewById(R.id.pokemon_name);
         pokemonImageView = itemView.findViewById(R.id.pokemon_image);
     }    // Constructor del ViewHolder
 
