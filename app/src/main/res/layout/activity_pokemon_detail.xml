@@ -48,5 +48,13 @@
             android:textSize="18sp"
             android:paddingBottom="4dp"
             android:gravity="center" />
+        <Button
+            android:id="@+id/capture_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Capturar Pokémon"
+            android:backgroundTint="@color/Blue_1"
+            android:textColor="@android:color/white" />
     </LinearLayout>
 </ScrollView>
