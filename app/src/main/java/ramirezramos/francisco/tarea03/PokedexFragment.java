@@ -1,9 +1,14 @@
 package ramirezramos.francisco.tarea03;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,26 +18,30 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PokedexActivity extends AppCompatActivity {
+public class PokedexFragment extends Fragment {
 
     private FirebaseFirestore db;
     private final List<PokemonCaptured> capturedPokemonList = new ArrayList<>();
     private PokedexAdapter adapter;
 
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pokedex);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_pokedex, container, false);
 
-        RecyclerView recyclerView = findViewById(R.id.pokedex_recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        RecyclerView recyclerView = view.findViewById(R.id.pokedex_recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         adapter = new PokedexAdapter(capturedPokemonList);
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
+        loadCapturedPokemon();
 
-        // Cargar Pokémon capturados desde Firestore
+        return view;
+    }
+
+    private void loadCapturedPokemon() {
         db.collection("captured_pokemon")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
@@ -44,13 +53,12 @@ public class PokedexActivity extends AppCompatActivity {
                         long height = document.getLong("height");
                         String imageUrl = document.getString("imageUrl");
 
-                        capturedPokemonList.add(new PokemonCaptured(
-                                name, type, (int) weight, (int) height, imageUrl));
+                        capturedPokemonList.add(new PokemonCaptured(name, type, (int) weight, (int) height, imageUrl));
                     }
-                    adapter.notifyDataSetChanged(); // Actualizar la lista
+                    adapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e -> {
-                    Toast.makeText(this, "Error al cargar la Pokédex", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Error al cargar la Pokédex", Toast.LENGTH_SHORT).show();
                 });
     }
 }
