@@ -32,7 +32,7 @@ public class PokedexFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.pokedex_recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        adapter = new PokedexAdapter(capturedPokemonList);
+        adapter = new PokedexAdapter(capturedPokemonList, this::showPokemonDetails);
         recyclerView.setAdapter(adapter);
 
         db = FirebaseFirestore.getInstance();
@@ -47,23 +47,24 @@ public class PokedexFragment extends Fragment {
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     capturedPokemonList.clear();
                     for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
-                        // Validar y asignar valores predeterminados si son nulos
-                        String name = document.getString("name") != null ? document.getString("name") : "Desconocido";
-                        String type = document.getString("type") != null ? document.getString("type") : "Desconocido";
-                        Long weightLong = document.getLong("weight");
-                        Long heightLong = document.getLong("height");
-                        String imageUrl = document.getString("imageUrl") != null ? document.getString("imageUrl") : "";
+                        String name = document.getString("name");
+                        String type = document.getString("type");
+                        long weight = document.getLong("weight");
+                        long height = document.getLong("height");
+                        String imageUrl = document.getString("imageUrl");
 
-                        // Manejar valores Long que pueden ser nulos
-                        int weight = (weightLong != null) ? weightLong.intValue() : 0;
-                        int height = (heightLong != null) ? heightLong.intValue() : 0;
-
-                        capturedPokemonList.add(new PokemonCaptured(name, type, weight, height, imageUrl));
+                        capturedPokemonList.add(new PokemonCaptured(name, type, (int) weight, (int) height, imageUrl));
                     }
                     adapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e -> {
                     Toast.makeText(getContext(), "Error al cargar la Pokédex", Toast.LENGTH_SHORT).show();
                 });
+    }
+
+    private void showPokemonDetails(PokemonCaptured pokemon) {
+        Toast.makeText(getContext(), "Seleccionado: " + pokemon.getName(), Toast.LENGTH_SHORT).show();
+        // Aquí puedes mostrar el CardView con los detalles del Pokémon seleccionado
+        // Ejemplo: actualizar una vista o navegar a un nuevo fragmento
     }
 }
