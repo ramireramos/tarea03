@@ -27,4 +27,17 @@
         android:textSize="14sp"
         android:layout_gravity="center"
         android:paddingTop="2dp" />
+    <TextView
+        android:id="@+id/pokemon_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peso"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/pokemon_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Altura"
+        android:textSize="14sp" />
 </LinearLayout>

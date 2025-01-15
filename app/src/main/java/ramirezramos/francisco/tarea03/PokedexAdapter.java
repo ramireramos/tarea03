@@ -25,7 +25,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.PokedexV
     @Override
     public PokedexViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout., parent, false); // Asegúrate de usar el nombre correcto del archivo XML
+                .inflate(R.layout.item_pokedex, parent, false); // Asegúrate de usar el nombre correcto del archivo XML
         return new PokedexViewHolder(view);
     }
 
