@@ -25,7 +25,7 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.PokedexV
     @Override
     public PokedexViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_pokemon, parent, false);
+                .inflate(R.layout., parent, false); // Asegúrate de usar el nombre correcto del archivo XML
         return new PokedexViewHolder(view);
     }
 
@@ -33,15 +33,14 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.PokedexV
     public void onBindViewHolder(@NonNull PokedexViewHolder holder, int position) {
         PokemonCaptured pokemon = capturedPokemonList.get(position);
         holder.nameTextView.setText(pokemon.getName());
-        holder.typeTextView.setText("Tipo: " + pokemon.getType());
-        holder.weightTextView.setText("Peso: " + pokemon.getWeight() + " kg");
-        holder.heightTextView.setText("Altura: " + pokemon.getHeight() + " m");
-
+        holder.typeTextView.setText(pokemon.getType());
+        holder.weightTextView.setText(String.format("Weight: %d", pokemon.getWeight()));
+        holder.heightTextView.setText(String.format("Height: %d", pokemon.getHeight()));
         Picasso.get()
                 .load(pokemon.getImageUrl())
-                .placeholder(R.drawable.pokemon)
-                .error(R.drawable.poke2)
-                .into(holder.imageView);
+                .placeholder(R.drawable.pokemon) // Imagen de carga
+                .error(R.drawable.poke2)             // Imagen de error
+                .into(holder.pokemonImageView);
     }
 
     @Override
@@ -50,19 +49,16 @@ public class PokedexAdapter extends RecyclerView.Adapter<PokedexAdapter.PokedexV
     }
 
     public static class PokedexViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
-        TextView nameTextView;
-        TextView typeTextView;
-        TextView weightTextView;
-        TextView heightTextView;
+        ImageView pokemonImageView;
+        TextView nameTextView, typeTextView, weightTextView, heightTextView;
 
         public PokedexViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.pokemon_image);
-            nameTextView = itemView.findViewById(R.id.pokemon_name);
-            typeTextView = itemView.findViewById(R.id.pokemon_type);
-            weightTextView = itemView.findViewById(R.id.pokemon_weight);
-            heightTextView = itemView.findViewById(R.id.pokemon_height);
+            pokemonImageView = itemView.findViewById(R.id.pokemon_image);  // ID del ImageView
+            nameTextView = itemView.findViewById(R.id.pokemon_name);      // ID del TextView para el nombre
+            typeTextView = itemView.findViewById(R.id.pokemon_type);      // ID del TextView para el tipo
+            weightTextView = itemView.findViewById(R.id.pokemon_weight);  // ID del TextView para el peso
+            heightTextView = itemView.findViewById(R.id.pokemon_height);  // ID del TextView para la altura
         }
     }
 }
