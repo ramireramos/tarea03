@@ -1,4 +1,4 @@
-package ramirezramos.francisco.tarea03;
+package ramirezramos.francisco.tarea03.api;
 
 import com.google.gson.annotations.SerializedName;
 import java.util.List;
