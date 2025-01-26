@@ -2,7 +2,6 @@ package ramirezramos.francisco.tarea03;
 
 import android.os.Bundle;
 import android.view.Menu;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -28,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Inicializar Firebase y Firestore
         FirebaseApp.initializeApp(this);
         db = FirebaseFirestore.getInstance();
 
@@ -36,22 +34,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         setSupportActionBar(binding.appBarMain.toolbar);
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Ejemplo de interacción con Firestore
-                testFirestore();
 
-                Snackbar.make(view, "Probando Firestore", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null)
-                        .setAnchorView(R.id.fab).show();
-            }
-        });
 
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
 
-        // Passing each menu ID as a set of IDs because each menu should be considered as top-level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_pokedex, R.id.nav_ajustes)
                 .setOpenableLayout(drawer)
@@ -63,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
@@ -75,45 +61,36 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    /**
-     * Método de prueba para agregar datos a Firestore.
-     */
     private void testFirestore() {
-        // Agregar un Pokémon de prueba a Firestore
         db.collection("pokemon_captured")
-                .add(new Pokemon("Pikachu", "Electric", 6, 40))
-                .addOnSuccessListener(documentReference -> {
-                    Snackbar.make(binding.getRoot(), "¡Pokémon agregado!", Snackbar.LENGTH_SHORT).show();
-                })
-                .addOnFailureListener(e -> {
-                    Snackbar.make(binding.getRoot(), "Error al agregar Pokémon: " + e.getMessage(), Snackbar.LENGTH_SHORT).show();
-                });
+                .add(new Pokemon("Pikachu", "1234", "Electric", 6, 40))
+                .addOnSuccessListener(documentReference -> Snackbar.make(binding.getRoot(), "¡Pokémon agregado!", Snackbar.LENGTH_SHORT).show())
+                .addOnFailureListener(e -> Snackbar.make(binding.getRoot(), "Error al agregar Pokémon", Snackbar.LENGTH_SHORT).show());
     }
 
-    /**
-     * Clase modelo para un Pokémon.
-     */
     public static class Pokemon {
         private String name;
+        private String id;
         private String type;
         private int weight;
         private int height;
 
-        // Constructor vacío requerido por Firestore
         public Pokemon() {}
 
-        public Pokemon(String name, String type, int weight, int height) {
+        public Pokemon(String name, String id, String type, int weight, int height) {
             this.name = name;
+            this.id = id;
             this.type = type;
             this.weight = weight;
             this.height = height;
         }
 
-        // Getters y Setters
         public String getName() {
             return name;
         }
-
+        public String getId() {
+            return id;
+        }
         public String getType() {
             return type;
         }

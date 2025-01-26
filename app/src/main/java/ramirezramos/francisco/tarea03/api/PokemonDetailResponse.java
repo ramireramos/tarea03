@@ -5,6 +5,9 @@ import java.util.List;
 
 public class PokemonDetailResponse {
 
+    @SerializedName("id")
+    private int id;
+
     @SerializedName("weight")
     private int weight;
 
@@ -12,7 +15,11 @@ public class PokemonDetailResponse {
     private int height;
 
     @SerializedName("types")
-    private List<Type> types;
+    private final List<Type> types;
+
+    public PokemonDetailResponse(List<Type> types) {
+        this.types = types;
+    }
 
     public int getWeight() {
         return weight;
@@ -20,6 +27,10 @@ public class PokemonDetailResponse {
 
     public int getHeight() {
         return height;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getTypesAsString() {

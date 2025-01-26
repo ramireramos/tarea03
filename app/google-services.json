@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "695196601325",
+    "firebase_url": "https://tarea03-cf71e-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "tarea03-cf71e",
     "storage_bucket": "tarea03-cf71e.firebasestorage.app"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "695196601325-iq9qlma81giju80tla4ruqqd73obf5b4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ramirezramos.francisco.tarea03",
+            "certificate_hash": "f3776bf804d517dcd44648bac8b0872e3309b429"
+          }
+        },
         {
           "client_id": "695196601325-6fdkpks3kep25o8hbq92tbs4o0db7ci5.apps.googleusercontent.com",
           "client_type": 3

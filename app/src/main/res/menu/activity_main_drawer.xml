@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view">
+    tools:showIn="navigation_view" >
 
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_home"
-            android:icon="@mipmap/poke2"
+            android:icon="@drawable/common_google_signin_btn_icon_dark"
             android:title="@string/menu_home" />
         <item
             android:id="@+id/nav_pokedex"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:icon="@drawable/common_google_signin_btn_icon_light_normal"
+            android:title="@string/menu_pokedex" />
         <item
             android:id="@+id/nav_ajustes"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:icon="@drawable/common_google_signin_btn_icon_light_normal_background"
+            android:title="@string/menu_settings" />
     </group>
 </menu>

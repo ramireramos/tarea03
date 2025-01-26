@@ -1,6 +1,6 @@
 package ramirezramos.francisco.tarea03.api;
 
-import ramirezramos.francisco.tarea03.PokemonDetailResponse;
+import ramirezramos.francisco.tarea03.home.PokemonDetailResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

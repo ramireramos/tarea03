@@ -3,23 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/nav_home" >
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="ramirezramos.francisco.tarea03.HomeFragment"
+        android:name="ramirezramos.francisco.tarea03.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/nav_pokedex"
-        android:name="ramirezramos.francisco.tarea03.PokedexFragment"
-        android:label="@string/menu_gallery"
+        android:name="ramirezramos.francisco.tarea03.pokedex.PokedexFragment"
+        android:label="@string/menu_pokedex"
         tools:layout="@layout/fragment_pokedex" />
 
     <fragment
         android:id="@+id/nav_ajustes"
-        android:name="ramirezramos.francisco.tarea03.AjustesFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:name="ramirezramos.francisco.tarea03.settings.SettingsFragment"
+        android:label="@string/menu_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

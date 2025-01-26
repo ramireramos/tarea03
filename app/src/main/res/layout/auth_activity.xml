@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -23,11 +24,28 @@
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Registrar" />
+        android:text="Registrar"
+        android:backgroundTint="@color/Blue_1" />
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Iniciar sesión" />
+
+    <Button
+        android:id="@+id/btnLoginGoogle"
+        android:layout_width="100dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:text="Inicia con Google"
+        android:backgroundTint="@color/Blue_1"
+        android:drawableBottom="@drawable/common_google_signin_btn_icon_light_normal"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/pikainicial" />
+
 </LinearLayout>

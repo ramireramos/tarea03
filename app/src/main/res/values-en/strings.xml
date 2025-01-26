@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">tarea03</string>
+    <string name="navigation_drawer_open">Open navigation drawe</string>
+    <string name="nav_header_title">Pokemon´s App</string>
+    <string name="nav_header_desc">Nav Header</string>
+    <string name="about_settings">About</string>
+    <string name="pokemon_image">Pokemon Image</string>
+    <string name="pokemon_name">Pokemon´s Name</string>
+    <string name="pokemon_type">Pokemon Type</string>
+    <string name="id_pokemon">Pokemon ID</string>
+    <string name="resources">Pokemon Type</string>
+    <string name="pokemon_weight">Pokemon height</string>
+    <string name="menu_pokedex">Pokedex Menu</string>
+    <string name="menu_home">Home menu</string>
+    <string name="menu_settings">Settings menu</string>
+    <string name="delete_pokemon">Delete Pokemon</string>
+    <string name="pokemon_image_desc">Image description</string>
+    <string name="settings_title">Settings</string>
+    <string name="allow_deletion">Allow Deletion</string>
+    <string name="logout">Logout</string>
+    <string name="laguage">Idioma</string>
+    <string-array name="language_options">
+        <item>Castellano</item>
+        <item>Inglés</item>
+    </string-array>
+    <string name="vibration_setting">Vibration setting</string>
+    <string name="language_changed_es">Language changed to Spanish</string>
+    <string name="language_changed_en">Languaje changed to English</string>
+</resources>

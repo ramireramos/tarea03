@@ -1,59 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    android:elevation="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:padding="8dp"
+    android:background="@color/white">
 
-    <!-- Imagen del Pokémon -->
-    <ImageView
-        android:id="@+id/pokemon_image"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/pokemon_image_desc"
-        android:src="@drawable/placeholder" />
-
-    <!-- Información del Pokémon -->
     <LinearLayout
-        android:layout_width="100dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp">
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/pokemon_name"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="@string/pokemon_name_placeholder"
-            android:textAppearance="?attr/textAppearanceBody1" />
+        <!-- Imagen del Pokémon -->
+        <ImageView
+            android:id="@+id/pokemon_image"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginEnd="12dp"
+            android:scaleType="centerCrop"
+            android:background="@color/white"
+            android:contentDescription="@string/pokemon_image_desc" />
 
-        <TextView
-            android:id="@+id/pokemon_type"
-            android:layout_width="wrap_content"
+        <!-- Información del Pokémon -->
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceBody2"
-            android:textColor="@color/Blue_2" />
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/pokemon_details"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?attr/textAppearanceCaption"
-            android:textColor="@color/black" />
+            <!-- Nombre del Pokémon -->
+            <TextView
+                android:id="@+id/pokemon_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pokemon_name_placeholder"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <!-- Tipo del Pokémon -->
+            <TextView
+                android:id="@+id/pokemon_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="@color/Blue_2" />
+
+            <!-- Detalles adicionales -->
+            <TextView
+                android:id="@+id/pokemon_details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="@color/black" />
+
+            <!-- ID del Pokémon -->
+            <TextView
+                android:id="@+id/pokemon_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?attr/textAppearanceCaption"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <!-- Botón de eliminar Pokémon -->
+        <ImageButton
+            android:id="@+id/btn_delete_pokemon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="12dp"
+            android:scaleType="centerCrop"
+            android:background="?attr/selectableItemBackground"
+            android:contentDescription="@string/delete_pokemon"
+            android:src="@drawable/delete" />
     </LinearLayout>
-
-    <!-- Botón de eliminar Pokémon -->
-    <ImageButton
-        android:id="@+id/btn_delete_pokemon"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
-        android:scaleType="centerCrop"
-        android:contentDescription="@string/delete_pokemon"
-        android:src="@drawable/delete" />
-
-</LinearLayout>
+</androidx.cardview.widget.CardView>
